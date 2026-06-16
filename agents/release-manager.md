@@ -4,7 +4,7 @@ description: Plans releases, manages rollout strategy, coordinates version bumps
 tools: Read, Bash, Glob, Grep, WebFetch
 model: sonnet
 color: cyan
-skills: skill-release-management, skill-configuration-management, skill-dependency-management, skill-ops-sre
+skills: skill-release-management, skill-configuration-management, skill-dependency-management
 ---
 
 # Release Manager Agent

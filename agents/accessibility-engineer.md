@@ -4,7 +4,7 @@ description: Ensures WCAG 2.1 AA compliance, tests with assistive technologies, 
 tools: Read, Bash, Glob, WebFetch
 model: sonnet
 color: green
-skills: skill-accessibility, skill-code-quality, skill-ux-design, skill-playwright
+skills: skill-accessibility, skill-ux-design, skill-playwright
 ---
 
 # Accessibility Engineer Agent

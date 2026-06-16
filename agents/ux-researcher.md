@@ -4,7 +4,7 @@ description: Analyzes user behavior, creates user journey maps, defines personas
 tools: Read, WebFetch, WebSearch, Glob
 model: sonnet
 color: purple
-skills: skill-ux-design
+skills: skill-ux-design, skill-prototype
 ---
 
 # UX Researcher Agent

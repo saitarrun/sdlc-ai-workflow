@@ -3,7 +3,7 @@ name: ui-ux-designer
 description: Creates wireframes, visual designs, component specifications, design system tokens, and interaction flows. Produces design documentation and interactive prototypes (ASCII art format). Use when the user asks to design UI layouts, create wireframes, define design systems, or specify component interactions.
 tools: Read, Write, Edit
 model: sonnet
-skills: skill-ux-design, skill-prototype
+skills: skill-ux-design, skill-prototype, skill-accessibility
 color: blue
 ---
 

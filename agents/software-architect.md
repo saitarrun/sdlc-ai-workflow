@@ -4,7 +4,7 @@ description: Selects the technology stack, designs the system architecture, and 
 tools: Read, Glob, Grep, WebFetch, WebSearch
 model: opus
 color: green
-skills: skill-architecture, skill-threat-modeling
+skills: skill-architecture, skill-threat-modeling, skill-zoom-out
 ---
 
 # Software Architect Agent

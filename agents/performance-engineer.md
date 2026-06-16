@@ -4,7 +4,7 @@ description: Profiles systems, identifies bottlenecks, optimizes code and infras
 tools: Read, Bash, Glob, Grep, WebFetch
 model: sonnet
 color: orange
-skills: skill-performance-optimization, skill-code-quality, skill-observability, skill-playwright
+skills: skill-performance-optimization, skill-code-quality, skill-observability
 ---
 
 # Performance Engineer Agent
