@@ -1,0 +1,56 @@
+{
+  "name": "sdlc-workflow",
+  "version": "1.0.0",
+  "description": "Complete Software Development Lifecycle plugin for Claude Code: 20 agents, 13 skills, 8 commands for planning → design → development → testing → deployment → operations.",
+  "keywords": [
+    "claude-code",
+    "plugin",
+    "sdlc",
+    "workflow",
+    "agents",
+    "development",
+    "testing",
+    "security",
+    "devops"
+  ],
+  "homepage": "https://github.com/saitarrun/sdlc-workflow",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/saitarrun/sdlc-workflow"
+  },
+  "bugs": {
+    "url": "https://github.com/saitarrun/sdlc-workflow/issues"
+  },
+  "author": {
+    "name": "saitarrun",
+    "email": "saitarrunpitta@gmail.com"
+  },
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "files": [
+    "agents/",
+    "skills/",
+    "commands/",
+    "scripts/",
+    ".claude-plugin/",
+    "README.md",
+    "CLAUDE.md"
+  ],
+  "scripts": {
+    "validate": "node scripts/validate-plugin.js",
+    "install-local": "node scripts/install-local.js",
+    "uninstall": "node scripts/uninstall.js",
+    "test": "echo 'Plugin tests would run here' && exit 0"
+  },
+  "bin": {
+    "sdlc-workflow": "scripts/cli.js"
+  },
+  "claude": {
+    "type": "plugin",
+    "agents": "agents/",
+    "skills": "skills/",
+    "commands": "commands/"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "name": "sdlc-workflow",
+  "version": "1.0.0",
+  "description": "Complete SDLC plugin: 20 agents across 6 phases, 13 skills including code quality standards, 8 orchestrator commands. Build products with enforced linting, testing pyramid, SAST/SCA scanning, CI/CD gates, and comprehensive documentation.",
+  "keywords": [
+    "sdlc",
+    "workflow",
+    "agents",
+    "code-quality",
+    "testing",
+    "security",
+    "devops",
+    "ci-cd"
+  ],
+  "homepage": "https://github.com/saitarrun/sdlc-workflow",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/saitarrun/sdlc-workflow"
+  },
+  "author": {
+    "name": "saitarrun",
+    "email": "saitarrunpitta@gmail.com"
+  },
+  "license": "MIT",
+  "agents": 20,
+  "skills": 13,
+  "commands": 8,
+  "highlights": [
+    "20 specialized role-based agents",
+    "6-phase SDLC orchestrator with approval gates",
+    "13 knowledge skills including code quality standards",
+    "Code quality enforcement: linting, testing pyramid, SAST/SCA, CI/CD gates",
+    "Production-ready configuration templates",
+    "Complete documentation and examples"
+  ]
+}
