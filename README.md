@@ -23,13 +23,6 @@ git clone https://github.com/saitarrun/sdlc-workflow
 cd sdlc-workflow
 npm run install-local
 ```
-
-**Or via Claude Code:**
-
-```
-/plugin install github:saitarrun/sdlc-workflow
-```
-
 ---
 
 ## Features
