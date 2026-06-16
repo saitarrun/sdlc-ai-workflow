@@ -17,7 +17,7 @@ This command runs the complete Software Development Lifecycle end-to-end with 6 
 
 ## Phases
 
-1. **Phase 1 — Planning** (product-manager → business-analyst → software-architect → security-architect)
+1. **Phase 1 — Planning** (product-manager [grill → define] → business-analyst → software-architect → security-architect)
 2. **Phase 2 — Design** (ux-researcher → ui-ux-designer)
 3. **Phase 3 — Development** (frontend/backend/database/mobile engineers in parallel)
 4. **Phase 4 — Testing & Security** (qa-manual-tester → automation-qa-engineer → appsec-engineer → penetration-tester)
@@ -28,7 +28,7 @@ This command runs the complete Software Development Lifecycle end-to-end with 6 
 
 1. Parse feature request (or load from GitHub issue)
 2. Create `.sdlc/run-<timestamp>/` directory for shared state
-3. Run Phase 1 → present results → **GATE**: User approves or requests changes
+3. Run Phase 1 (Product Manager grills customer to reach shared understanding) → present results → **GATE**: User approves or requests changes
 4. Run Phase 2 → present results → **GATE**: User approves or requests changes
 5. ... repeat for all 6 phases ...
 6. Compile final summary → offer `gh pr create`

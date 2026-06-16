@@ -1,6 +1,6 @@
 # Agent-Skills Mapping Manifest
 
-**Complete SDLC Workflow** — 26 agents × 43 skills × 9 phases
+**Complete SDLC Workflow** — 26 agents × 43 skills × 6 phases
 
 ---
 
@@ -17,9 +17,9 @@
 ## Phase 1 — Planning, Strategy & Requirements
 
 ### product-manager
-**Skills**: skill-requirements, skill-prd-synthesis
-**Output**: PRD with QUANTS metrics, roadmap, success criteria
-**Key**: INVEST criteria, QUANTS framework, stakeholder alignment
+**Skills**: skill-grill-me, skill-requirements, skill-prd-synthesis
+**Output**: Customer interview (grill session), PRD with QUANTS metrics, roadmap, success criteria
+**Key**: Relentless customer interview, INVEST criteria, QUANTS framework, stakeholder alignment
 
 ### business-analyst
 **Skills**: skill-requirements, skill-plan-breakdown, skill-issue-triage

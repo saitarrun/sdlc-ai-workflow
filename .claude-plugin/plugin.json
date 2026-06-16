@@ -1,7 +1,7 @@
 {
   "name": "sdlc-workflow",
   "version": "1.0.0",
-  "description": "Complete SDLC Workflow in a Plugin: 26 agents across 9 phases (planning → incident response → retrospectives), 43 knowledge skills (core SDLC + advanced methodology), 14 orchestrator commands. Full incident management, performance optimization, accessibility, observability, tech debt, release management, and organizational health.",
+  "description": "Complete SDLC Workflow in a Plugin: 26 agents across 6 phases (planning, design, development, testing, deployment, operations), 43 knowledge skills, 14 orchestrator commands. Industry-standard SDLC best practices embedded in every agent.",
   "keywords": [
     "sdlc",
     "workflow",
@@ -40,7 +40,7 @@
     "6-phase SDLC orchestrator with approval gates",
     "43 knowledge skills: 13 core SDLC, 30 advanced methodology skills (incident mgmt, perf, a11y, observability, release, tech debt, org health, etc.)",
     "6 new agents: Engineering Manager, Tech Lead, Release Manager, Technical Writer, Performance Engineer, Accessibility Engineer",
-    "5 new phases: Tech Debt Optimization, Incident Response, Retrospectives (+ 9 total)",
+    "6-phase SDLC covering planning, design, development, testing, deployment, operations",
     "Ready-to-use templates: RFC, design docs, ADRs, postmortems, SLOs, incident reports, performance benchmarks, accessibility audits",
     "Code quality enforcement: linting, testing pyramid, SAST/SCA, CI/CD gates",
     "Integrated code-review-graph for visual dependency analysis and change impact",

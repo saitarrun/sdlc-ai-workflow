@@ -16,11 +16,12 @@ Outputs:
 
 ## Process
 
-1. Product Manager: Define goals, success metrics, roadmap
-2. Business Analyst: Decompose into INVEST-compliant user stories with AC
-3. Software Architect: Select tech stack, produce ADR
-4. Security Architect: Threat model (STRIDE), security requirements
-5. **GATE**: User approves all artifacts before proceeding to Phase 2
+1. **Product Manager (Grill Phase)**: Use skill-grill-me to relentlessly interview customer about their product/feature — understand the problem deeply, resolve ambiguities, walk the decision tree
+2. Product Manager: Define goals, success metrics, roadmap (informed by grill session)
+3. Business Analyst: Decompose into INVEST-compliant user stories with AC
+4. Software Architect: Select tech stack, produce ADR
+5. Security Architect: Threat model (STRIDE), security requirements
+6. **GATE**: User approves all artifacts before proceeding to Phase 2
 
 ## Usage
 
