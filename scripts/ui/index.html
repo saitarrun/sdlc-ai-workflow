@@ -186,6 +186,35 @@
                     </div>
                 </div>
 
+                <!-- Idle Agents Section -->
+                <div class="space-y-2">
+                    <div class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-outline-variant text-[20px]">pause_circle</span>
+                        <h4 class="font-headline-md text-headline-md text-outline-variant">Idle Agents</h4>
+                        <span class="text-on-surface-variant font-code-sm" id="idle-count">(0)</span>
+                    </div>
+                    <div class="bg-surface-container-lowest border border-outline-variant">
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left border-collapse">
+                                <thead>
+                                    <tr class="border-b border-outline-variant bg-surface-container">
+                                        <th class="px-6 py-4 font-label-caps text-label-caps text-on-surface-variant">AGENT ID</th>
+                                        <th class="px-6 py-4 font-label-caps text-label-caps text-on-surface-variant">STATUS</th>
+                                        <th class="px-6 py-4 font-label-caps text-label-caps text-on-surface-variant">PHASE</th>
+                                        <th class="px-6 py-4 font-label-caps text-label-caps text-on-surface-variant">START TIME</th>
+                                        <th class="px-6 py-4 font-label-caps text-label-caps text-on-surface-variant">DURATION</th>
+                                        <th class="px-6 py-4 font-label-caps text-label-caps text-on-surface-variant">LATEST LOG</th>
+                                        <th class="px-6 py-4 font-label-caps text-label-caps text-on-surface-variant">ACTIONS</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="idle-agents-table" class="divide-y divide-outline-variant font-code-sm text-code-sm">
+                                    <!-- Idle agents rows inserted here -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Completed Agents Section -->
                 <div class="space-y-2">
                     <div class="flex items-center gap-2">
@@ -292,12 +321,47 @@
         pauseAllAgents();
     });
 
+    // Search and filter functionality
+    document.getElementById('search-input').addEventListener('input', (e) => {
+        const query = e.target.value.toLowerCase();
+        const runningRows = document.querySelectorAll('#running-agents-table tr');
+        const idleRows = document.querySelectorAll('#idle-agents-table tr');
+        const completedRows = document.querySelectorAll('#completed-agents-table tr');
+
+        runningRows.forEach(row => {
+            const text = row.textContent.toLowerCase();
+            row.style.display = text.includes(query) ? '' : 'none';
+        });
+
+        idleRows.forEach(row => {
+            const text = row.textContent.toLowerCase();
+            row.style.display = text.includes(query) ? '' : 'none';
+        });
+
+        completedRows.forEach(row => {
+            const text = row.textContent.toLowerCase();
+            row.style.display = text.includes(query) ? '' : 'none';
+        });
+    });
+
     function exportToCSV() {
         const runningRows = document.querySelectorAll('#running-agents-table tr');
+        const idleRows = document.querySelectorAll('#idle-agents-table tr');
         const completedRows = document.querySelectorAll('#completed-agents-table tr');
         let csv = 'AGENT ID,STATUS,PHASE,START TIME,DURATION,LATEST LOG\n';
 
         runningRows.forEach(row => {
+            const cells = row.querySelectorAll('td');
+            if (cells.length > 0) {
+                const rowData = Array.from(cells).slice(0, 6).map(cell => {
+                    const text = cell.textContent.trim().replace(/"/g, '""');
+                    return `"${text}"`;
+                }).join(',');
+                csv += rowData + '\n';
+            }
+        });
+
+        idleRows.forEach(row => {
             const cells = row.querySelectorAll('td');
             if (cells.length > 0) {
                 const rowData = Array.from(cells).slice(0, 6).map(cell => {
@@ -331,10 +395,10 @@
     }
 
     function pauseAllAgents() {
-        const rows = document.querySelectorAll('#agents-table tr');
+        const runningRows = document.querySelectorAll('#running-agents-table tr');
         let pausedCount = 0;
 
-        rows.forEach(row => {
+        runningRows.forEach(row => {
             const statusCell = row.querySelector('td:nth-child(2)');
             if (statusCell && statusCell.textContent.includes('WORKING')) {
                 pausedCount++;
@@ -392,8 +456,10 @@
             agentsCache = agents;
 
             const runningTbody = document.getElementById('running-agents-table');
+            const idleTbody = document.getElementById('idle-agents-table');
             const completedTbody = document.getElementById('completed-agents-table');
             runningTbody.innerHTML = '';
+            idleTbody.innerHTML = '';
             completedTbody.innerHTML = '';
 
             let queued = 0, running = 0, complete = 0, failed = 0;
@@ -438,15 +504,19 @@
                 // Append to appropriate table
                 if (status === 'complete') {
                     completedTbody.appendChild(row);
-                } else {
+                } else if (status === 'working') {
                     runningTbody.appendChild(row);
+                } else {
+                    // waiting or blocked = idle
+                    idleTbody.appendChild(row);
                 }
 
                 row.querySelector('.log-btn').addEventListener('click', () => showAgentLogs(name));
             });
 
             // Update counts
-            document.getElementById('running-count').textContent = `(${running + queued + failed})`;
+            document.getElementById('running-count').textContent = `(${running})`;
+            document.getElementById('idle-count').textContent = `(${queued + failed})`;
             document.getElementById('completed-count').textContent = `(${complete})`;
 
             document.getElementById('metric-queued').textContent = queued;
