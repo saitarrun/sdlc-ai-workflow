@@ -30,7 +30,22 @@ A complete SDLC Workflow in a Plugin: 26 agents across 6 phases, 43 knowledge sk
 
 ## Installation
 
-### Quick Install (1 minute)
+### Option A: Global NPM (Recommended)
+
+```bash
+sudo npm install -g sdlc-workflow
+sdlc-workflow install
+```
+
+Restart Claude Code. Done!
+
+**Update later:**
+```bash
+sudo npm install -g sdlc-workflow@latest
+sdlc-workflow install
+```
+
+### Option B: Install from Source
 
 ```bash
 git clone https://github.com/saitarrun/sdlc-workflow
@@ -39,21 +54,14 @@ npm install
 npm run install-local
 ```
 
-Then **restart Claude Code** and you're ready.
-
-### Updating After New Commits
-
-```bash
-git pull origin main
-npm install
-npm run install-local
-```
+Restart Claude Code.
 
 **See [INSTALLATION.md](INSTALLATION.md) for:**
-- Detailed setup steps
-- Update procedures for new devices
+- Detailed setup for both methods
+- Update procedures
 - Troubleshooting
 - Development symlink mode
+- Uninstall instructions
 
 ---
 

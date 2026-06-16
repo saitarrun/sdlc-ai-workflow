@@ -2,20 +2,41 @@
 
 ## Initial Setup (New Device)
 
-### Step 1: Clone the Repository
+### Option A: Global NPM Install (Recommended for Most Users)
+
+**One-command installation from npm registry:**
+
+```bash
+sudo npm install -g sdlc-workflow
+sdlc-workflow install
+```
+
+Then **restart Claude Code** and you're ready to use `/sdlc-plan`, `/sdlc-design`, etc.
+
+**To update later:**
+```bash
+sudo npm install -g sdlc-workflow@latest
+sdlc-workflow install
+```
+
+### Option B: Install from Source (For Development)
+
+If you want to develop agents, skills, or commands locally:
+
+#### Step 1: Clone the Repository
 
 ```bash
 git clone https://github.com/saitarrun/sdlc-workflow.git
 cd sdlc-workflow
 ```
 
-### Step 2: Install Node Dependencies
+#### Step 2: Install Node Dependencies
 
 ```bash
 npm install
 ```
 
-### Step 3: Install the Plugin to Claude Code
+#### Step 3: Install the Plugin to Claude Code
 
 ```bash
 npm run install-local
@@ -26,18 +47,18 @@ npm run install-local
 make install-local
 ```
 
-### Step 4: Verify Installation
+#### Step 4: Verify Installation
 
 ```bash
 make validate
 ```
 
-Or manually check that the plugin is registered:
+Or manually check:
 ```bash
 ls ~/.claude/plugins/sdlc-workflow
 ```
 
-### Step 5: Restart Claude Code
+#### Step 5: Restart Claude Code
 
 Quit Claude Code completely and reopen it. The plugin commands will now be available:
 - `/sdlc-plan` — Phase 1 planning with grill-me interview
@@ -51,21 +72,35 @@ Quit Claude Code completely and reopen it. The plugin commands will now be avail
 
 ## Updating After New Commits
 
-When new commits are pushed to GitHub, update your local copy with:
+### If You Installed Globally (NPM)
 
-### Step 1: Pull Latest Changes
+When new commits are pushed to npm, simply:
 
 ```bash
+sudo npm install -g sdlc-workflow@latest
+sdlc-workflow install
+```
+
+Then restart Claude Code.
+
+### If You Installed from Source
+
+When new commits are pushed to GitHub, update your local copy:
+
+#### Step 1: Pull Latest Changes
+
+```bash
+cd ~/path/to/sdlc-workflow
 git pull origin main
 ```
 
-### Step 2: Install Updated Dependencies (if any changed)
+#### Step 2: Install Updated Dependencies (if any changed)
 
 ```bash
 npm install
 ```
 
-### Step 3: Reinstall the Plugin
+#### Step 3: Reinstall the Plugin
 
 ```bash
 npm run install-local
@@ -76,19 +111,17 @@ Or:
 make install-local
 ```
 
-### Step 4: Validate Updates
+#### Step 4: Validate Updates
 
 ```bash
 make validate
 ```
 
-### Step 5: Restart Claude Code
+#### Step 5: Restart Claude Code
 
 Quit and reopen Claude Code for changes to take effect.
 
----
-
-## Quick Update Script
+### Quick Update Script (Source Install Only)
 
 For convenience, create an alias in your shell:
 
@@ -116,9 +149,18 @@ The `npm run install-local` command:
 
 ## Uninstall
 
-To remove the plugin:
+### If You Installed Globally
 
 ```bash
+sudo npm uninstall -g sdlc-workflow
+```
+
+This removes the global CLI and plugin files.
+
+### If You Installed from Source
+
+```bash
+cd ~/path/to/sdlc-workflow
 npm run uninstall-local
 ```
 
@@ -127,7 +169,7 @@ Or:
 make uninstall
 ```
 
-This removes the plugin from `~/.claude/plugins/` but keeps your local files.
+This removes the plugin from `~/.claude/plugins/` but keeps your local repository files.
 
 ---
 
