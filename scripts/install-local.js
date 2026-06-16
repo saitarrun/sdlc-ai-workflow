@@ -2,50 +2,58 @@
 
 /**
  * Install SDLC Workflow Plugin Locally
- * Copies agents, skills, and commands to ~/.claude/ for immediate use
+ * Copies agents, skills, and commands to ~/.claude/ for immediate use.
+ * Agents and commands go in their own plugin subdirectory; skills are copied
+ * individually so the user's existing ~/.claude content is never clobbered.
  */
 
 const fs = require('fs');
 const path = require('path');
-const { execSync } = require('child_process');
 
 const PLUGIN_DIR = path.join(__dirname, '..');
 const CLAUDE_HOME = path.join(process.env.HOME || process.env.USERPROFILE, '.claude');
 
-const DIRS_TO_COPY = [
-  { src: 'agents', dest: 'agents/sdlc-workflow' },
-  { src: 'skills', dest: 'skills' },
-  { src: 'commands', dest: 'commands/sdlc-workflow' },
-];
-
 console.log('📦 Installing SDLC Workflow Plugin...\n');
 
-// Ensure ~/.claude exists
 if (!fs.existsSync(CLAUDE_HOME)) {
   fs.mkdirSync(CLAUDE_HOME, { recursive: true });
   console.log(`✓ Created ${CLAUDE_HOME}`);
 }
 
-// Copy files
-DIRS_TO_COPY.forEach(({ src, dest }) => {
-  const srcPath = path.join(PLUGIN_DIR, src);
-  const destPath = path.join(CLAUDE_HOME, dest);
-
-  if (!fs.existsSync(srcPath)) {
-    console.error(`❌ Source not found: ${srcPath}`);
+function replaceDir(src, dest, label) {
+  if (!fs.existsSync(src)) {
+    console.error(`❌ Source not found: ${src}`);
     process.exit(1);
   }
+  fs.rmSync(dest, { recursive: true, force: true });
+  fs.mkdirSync(path.dirname(dest), { recursive: true });
+  fs.cpSync(src, dest, { recursive: true });
+  console.log(`✓ Installed ${label}`);
+}
 
-  // Remove existing destination if it exists
-  if (fs.existsSync(destPath)) {
-    console.log(`  Updating ${dest}...`);
-    execSync(`rm -rf "${destPath}"`);
-  }
+// Agents and commands are namespaced under their own subdirectory.
+replaceDir(
+  path.join(PLUGIN_DIR, 'agents'),
+  path.join(CLAUDE_HOME, 'agents', 'sdlc-workflow'),
+  'agents → agents/sdlc-workflow',
+);
+replaceDir(
+  path.join(PLUGIN_DIR, 'commands'),
+  path.join(CLAUDE_HOME, 'commands', 'sdlc-workflow'),
+  'commands → commands/sdlc-workflow',
+);
 
-  // Copy
-  execSync(`cp -r "${srcPath}" "${destPath}"`);
-  console.log(`✓ Installed ${src} → ${dest}`);
-});
+// Skills are copied one directory at a time so we only touch our own skills.
+const skillsSrc = path.join(PLUGIN_DIR, 'skills');
+fs.readdirSync(skillsSrc)
+  .filter((entry) => fs.statSync(path.join(skillsSrc, entry)).isDirectory())
+  .forEach((skill) => {
+    replaceDir(
+      path.join(skillsSrc, skill),
+      path.join(CLAUDE_HOME, 'skills', skill),
+      `skills/${skill}`,
+    );
+  });
 
 console.log('\n✅ SDLC Workflow plugin installed successfully!\n');
 console.log('Available commands:');
@@ -57,4 +65,5 @@ console.log('  /sdlc-test               Phase 4: Testing & security');
 console.log('  /sdlc-deploy             Phase 5: Deployment & CI/CD');
 console.log('  /sdlc-ops                Phase 6: Operations & monitoring');
 console.log('  /sdlc-review             Code review (any phase)');
+console.log('  /sdlc-parallel           Run a phase with agents in parallel');
 console.log('\nRestart Claude Code to activate the plugin.');

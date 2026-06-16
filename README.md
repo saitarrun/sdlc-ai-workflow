@@ -1,6 +1,6 @@
 # SDLC Workflow Plugin
 
-A comprehensive Claude Code plugin that automates the complete Software Development Lifecycle with 20 role-specific agents, 12 knowledge skills, and 8 commands, all guided by principles from:
+A comprehensive Claude Code plugin that automates the complete Software Development Lifecycle with 20 role-specific agents, 13 knowledge skills, and 9 commands, all guided by principles from:
 
 - **Software Engineering at Google** — QUANTS, INVEST, Critique/LGTM, Testing Pyramid, CI/CD
 - **Architecture: The Hard Parts** — ADR, coupling/cohesion, fitness functions, service design
@@ -43,7 +43,7 @@ A comprehensive Claude Code plugin that automates the complete Software Developm
 - SecOps/SOC Analyst (security monitoring, incident response)
 - Data Engineer (data pipelines, ETL/ELT, analytics)
 
-### 8 Commands + Parallel Mode
+### 9 Commands + Parallel Mode
 
 | Command | Phase | Purpose |
 |---------|-------|---------|

@@ -1,6 +1,6 @@
 # SDLC Workflow Plugin — Installation Guide
 
-Get instant access to 20 role-based agents, 13 knowledge skills, and 8 commands for building complete products with Claude Code.
+Get instant access to 20 role-based agents, 13 knowledge skills, and 9 commands for building complete products with Claude Code.
 
 ## Quick Start (1 minute)
 
@@ -82,7 +82,7 @@ Then restart Claude Code.
 - `skill-documentation` — Docs-as-code
 - `skill-ops-sre` — SLO/SLI, QUANTS, error budgets
 
-### 8 Commands
+### 9 Commands
 
 | Command | Purpose |
 |---------|---------|
@@ -94,6 +94,7 @@ Then restart Claude Code.
 | `/sdlc-deploy` | Phase 5: Deployment → CI/CD + IaC |
 | `/sdlc-ops` | Phase 6: Operations → SLOs + monitoring + runbooks |
 | `/sdlc-review` | Code review (any phase) → PR comments + findings |
+| `/sdlc-parallel` | Run a phase with agents collaborating in parallel |
 
 ---
 

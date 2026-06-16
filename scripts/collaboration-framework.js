@@ -95,7 +95,7 @@ class CollaborationLog {
       );
       if (message) return message;
       // Poll every 500ms
-      require('child_process').execSync('sleep 0.5');
+      sleepSync(500);
     }
     return null;
   }
@@ -184,7 +184,7 @@ class AgentCoordinator extends EventEmitter {
       }
 
       if (satisfied.size < dependencies.length) {
-        require('child_process').execSync('sleep 1'); // Wait 1s before re-checking
+        sleepSync(1000); // Wait 1s before re-checking
       }
     }
 
@@ -284,6 +284,12 @@ class AgentCoordinator extends EventEmitter {
     const log = this.log.read();
     return log.metrics[phase] || null;
   }
+}
+
+// Block the current thread for `ms` milliseconds without spawning a process.
+// Portable across platforms (unlike shelling out to `sleep`).
+function sleepSync(ms) {
+  Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, ms);
 }
 
 // Helper function to set nested values

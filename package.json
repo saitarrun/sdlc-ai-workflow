@@ -1,7 +1,7 @@
 {
   "name": "sdlc-workflow",
   "version": "1.0.0",
-  "description": "Complete Software Development Lifecycle plugin for Claude Code: 20 agents, 13 skills, 8 commands for planning → design → development → testing → deployment → operations.",
+  "description": "Complete Software Development Lifecycle plugin for Claude Code: 20 agents, 13 skills, 9 commands for planning → design → development → testing → deployment → operations.",
   "keywords": [
     "claude-code",
     "plugin",

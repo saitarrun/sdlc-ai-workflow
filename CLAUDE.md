@@ -16,12 +16,12 @@ sdlc-workflow/
 │   ├── business-analyst.md
 │   ├── ... (18 more agents)
 │   └── data-engineer.md
-├── skills/                  # 12 knowledge skills (no tools/model)
+├── skills/                  # 13 knowledge skills (no tools/model)
 │   ├── skill-requirements/SKILL.md
 │   ├── skill-architecture/SKILL.md
 │   ├── ... (10 more skills)
 │   └── skill-ops-sre/SKILL.md
-├── commands/                # 8 user-invoked orchestrator commands
+├── commands/                # 9 user-invoked orchestrator commands
 │   ├── sdlc.md                      # Master orchestrator
 │   ├── sdlc-plan.md                 # Phase 1 only
 │   ├── sdlc-design.md               # Phase 2 only
