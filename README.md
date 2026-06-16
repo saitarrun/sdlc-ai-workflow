@@ -306,6 +306,18 @@ The dashboard displays:
 
 All sections update automatically as agents progress through the orchestration workflow.
 
+![Dashboard Overview](./docs/screenshots/dashboard-overview.png)
+
+**Dashboard Features:**
+- **Real-time status sync** — All 26 agents show current status (WORKING, COMPLETE, WAITING, AVAILABLE)
+- **Terminal-style design** — Black background (#000000) with green accents (#00ff41)
+- **Live metrics** — Progress bars for queued, running, completed, and failed agents
+- **Agent organization** — Grouped by phase (Planning, Design, Development, Testing & Security, Deployment, Operations)
+- **Execution tracking** — Start times, durations, and activity logs for each agent
+- **Responsive updates** — Automatically refreshes every 2 seconds via polling or SSE
+
+See [DASHBOARD.md](./docs/DASHBOARD.md) for detailed architecture and usage guide.
+
 ---
 
 ### Code Review
