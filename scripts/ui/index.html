@@ -169,25 +169,61 @@
                     </div>
                 </div>
 
-                <!-- Agent Table -->
-                <div class="bg-surface-container-lowest border border-outline-variant">
-                    <div class="overflow-x-auto">
-                        <table class="w-full text-left border-collapse">
-                            <thead>
-                                <tr class="border-b border-outline-variant bg-surface-container">
-                                    <th class="px-6 py-4 font-label-caps text-label-caps text-on-surface-variant">AGENT ID</th>
-                                    <th class="px-6 py-4 font-label-caps text-label-caps text-on-surface-variant">STATUS</th>
-                                    <th class="px-6 py-4 font-label-caps text-label-caps text-on-surface-variant">PHASE</th>
-                                    <th class="px-6 py-4 font-label-caps text-label-caps text-on-surface-variant">START TIME</th>
-                                    <th class="px-6 py-4 font-label-caps text-label-caps text-on-surface-variant">DURATION</th>
-                                    <th class="px-6 py-4 font-label-caps text-label-caps text-on-surface-variant">LATEST LOG</th>
-                                    <th class="px-6 py-4 font-label-caps text-label-caps text-on-surface-variant">ACTIONS</th>
-                                </tr>
-                            </thead>
-                            <tbody id="agents-table" class="divide-y divide-outline-variant font-code-sm text-code-sm">
-                                <!-- Agent rows dynamically inserted here -->
-                            </tbody>
-                        </table>
+                <!-- Running Agents Section -->
+                <div class="space-y-2">
+                    <div class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-primary-fixed text-[20px]">play_arrow</span>
+                        <h4 class="font-headline-md text-headline-md text-primary-fixed">Running Agents</h4>
+                        <span class="text-on-surface-variant font-code-sm" id="running-count">(0)</span>
+                    </div>
+                    <div class="bg-surface-container-lowest border border-outline-variant">
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left border-collapse">
+                                <thead>
+                                    <tr class="border-b border-outline-variant bg-surface-container">
+                                        <th class="px-6 py-4 font-label-caps text-label-caps text-on-surface-variant">AGENT ID</th>
+                                        <th class="px-6 py-4 font-label-caps text-label-caps text-on-surface-variant">STATUS</th>
+                                        <th class="px-6 py-4 font-label-caps text-label-caps text-on-surface-variant">PHASE</th>
+                                        <th class="px-6 py-4 font-label-caps text-label-caps text-on-surface-variant">START TIME</th>
+                                        <th class="px-6 py-4 font-label-caps text-label-caps text-on-surface-variant">DURATION</th>
+                                        <th class="px-6 py-4 font-label-caps text-label-caps text-on-surface-variant">LATEST LOG</th>
+                                        <th class="px-6 py-4 font-label-caps text-label-caps text-on-surface-variant">ACTIONS</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="running-agents-table" class="divide-y divide-outline-variant font-code-sm text-code-sm">
+                                    <!-- Running agents rows inserted here -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Completed Agents Section -->
+                <div class="space-y-2">
+                    <div class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-secondary text-[20px]">check_circle</span>
+                        <h4 class="font-headline-md text-headline-md text-secondary">Completed Agents</h4>
+                        <span class="text-on-surface-variant font-code-sm" id="completed-count">(0)</span>
+                    </div>
+                    <div class="bg-surface-container-lowest border border-outline-variant">
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left border-collapse">
+                                <thead>
+                                    <tr class="border-b border-outline-variant bg-surface-container">
+                                        <th class="px-6 py-4 font-label-caps text-label-caps text-on-surface-variant">AGENT ID</th>
+                                        <th class="px-6 py-4 font-label-caps text-label-caps text-on-surface-variant">STATUS</th>
+                                        <th class="px-6 py-4 font-label-caps text-label-caps text-on-surface-variant">PHASE</th>
+                                        <th class="px-6 py-4 font-label-caps text-label-caps text-on-surface-variant">START TIME</th>
+                                        <th class="px-6 py-4 font-label-caps text-label-caps text-on-surface-variant">DURATION</th>
+                                        <th class="px-6 py-4 font-label-caps text-label-caps text-on-surface-variant">LATEST LOG</th>
+                                        <th class="px-6 py-4 font-label-caps text-label-caps text-on-surface-variant">ACTIONS</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="completed-agents-table" class="divide-y divide-outline-variant font-code-sm text-code-sm">
+                                    <!-- Completed agents rows inserted here -->
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
 
@@ -260,8 +296,15 @@
     // Search and filter functionality
     document.getElementById('search-input').addEventListener('input', (e) => {
         const query = e.target.value.toLowerCase();
-        const rows = document.querySelectorAll('#agents-table tr');
-        rows.forEach(row => {
+        const runningRows = document.querySelectorAll('#running-agents-table tr');
+        const completedRows = document.querySelectorAll('#completed-agents-table tr');
+
+        runningRows.forEach(row => {
+            const text = row.textContent.toLowerCase();
+            row.style.display = text.includes(query) ? '' : 'none';
+        });
+
+        completedRows.forEach(row => {
             const text = row.textContent.toLowerCase();
             row.style.display = text.includes(query) ? '' : 'none';
         });
@@ -289,10 +332,22 @@
     });
 
     function exportToCSV() {
-        const rows = document.querySelectorAll('#agents-table tr');
+        const runningRows = document.querySelectorAll('#running-agents-table tr');
+        const completedRows = document.querySelectorAll('#completed-agents-table tr');
         let csv = 'AGENT ID,STATUS,PHASE,START TIME,DURATION,LATEST LOG\n';
 
-        rows.forEach(row => {
+        runningRows.forEach(row => {
+            const cells = row.querySelectorAll('td');
+            if (cells.length > 0) {
+                const rowData = Array.from(cells).slice(0, 6).map(cell => {
+                    const text = cell.textContent.trim().replace(/"/g, '""');
+                    return `"${text}"`;
+                }).join(',');
+                csv += rowData + '\n';
+            }
+        });
+
+        completedRows.forEach(row => {
             const cells = row.querySelectorAll('td');
             if (cells.length > 0) {
                 const rowData = Array.from(cells).slice(0, 6).map(cell => {
@@ -374,8 +429,11 @@
 
             const agents = runData.log?.agents || {};
             agentsCache = agents;
-            const tbody = document.getElementById('agents-table');
-            tbody.innerHTML = '';
+
+            const runningTbody = document.getElementById('running-agents-table');
+            const completedTbody = document.getElementById('completed-agents-table');
+            runningTbody.innerHTML = '';
+            completedTbody.innerHTML = '';
 
             let queued = 0, running = 0, complete = 0, failed = 0;
             const totalAgents = Object.keys(agents).length;
@@ -415,10 +473,20 @@
                         <button class="log-btn material-symbols-outlined text-on-surface-variant hover:text-primary-fixed transition-all cursor-pointer" data-agent="${name}">terminal</button>
                     </td>
                 `;
-                tbody.appendChild(row);
+
+                // Append to appropriate table
+                if (status === 'complete') {
+                    completedTbody.appendChild(row);
+                } else {
+                    runningTbody.appendChild(row);
+                }
 
                 row.querySelector('.log-btn').addEventListener('click', () => showAgentLogs(name));
             });
+
+            // Update counts
+            document.getElementById('running-count').textContent = `(${running + queued + failed})`;
+            document.getElementById('completed-count').textContent = `(${complete})`;
 
             document.getElementById('metric-queued').textContent = queued;
             document.getElementById('metric-running').textContent = running;
