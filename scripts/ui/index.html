@@ -133,28 +133,6 @@
             <h1 class="font-display text-headline-lg font-black tracking-tighter text-primary-fixed">ORCHESTRATOR</h1>
             <p class="font-label-caps text-label-caps text-on-surface-variant opacity-60">v2.4.0-stable</p>
         </div>
-        <nav class="flex-1 space-y-2">
-            <button id="nav-overview" class="w-full flex items-center gap-3 px-4 py-3 font-label-caps text-label-caps text-on-surface-variant opacity-70 hover:opacity-100 hover:bg-surface-variant transition-colors duration-200 cursor-pointer">
-                <span class="material-symbols-outlined">dashboard</span>
-                Overview
-            </button>
-            <button id="nav-agents" class="w-full flex items-center gap-3 px-4 py-3 font-label-caps text-label-caps text-primary-fixed border-r-2 border-primary-fixed bg-surface-container-highest transition-colors duration-200 cursor-pointer">
-                <span class="material-symbols-outlined">memory</span>
-                Active Agents
-            </button>
-            <button id="nav-logs" class="w-full flex items-center gap-3 px-4 py-3 font-label-caps text-label-caps text-on-surface-variant opacity-70 hover:opacity-100 hover:bg-surface-variant transition-colors duration-200 cursor-pointer">
-                <span class="material-symbols-outlined">terminal</span>
-                Logs
-            </button>
-            <button id="nav-performance" class="w-full flex items-center gap-3 px-4 py-3 font-label-caps text-label-caps text-on-surface-variant opacity-70 hover:opacity-100 hover:bg-surface-variant transition-colors duration-200 cursor-pointer">
-                <span class="material-symbols-outlined">query_stats</span>
-                Performance
-            </button>
-            <button id="nav-settings" class="w-full flex items-center gap-3 px-4 py-3 font-label-caps text-label-caps text-on-surface-variant opacity-70 hover:opacity-100 hover:bg-surface-variant transition-colors duration-200 cursor-pointer">
-                <span class="material-symbols-outlined">settings</span>
-                Settings
-            </button>
-        </nav>
         <div class="mt-auto px-4 pb-4">
             <button id="new-run-btn" class="w-full py-4 bg-primary-fixed text-on-primary-fixed font-label-caps text-label-caps font-bold tracking-widest hover:brightness-110 active:scale-[0.98] transition-all cursor-pointer">
                 NEW RUN
@@ -190,11 +168,8 @@
             </div>
         </header>
 
-        <!-- Page Content - Multi-view Container -->
-        <div class="p-margin-desktop space-y-gutter overflow-y-auto flex-1" id="view-container">
-
-            <!-- VIEW: OVERVIEW -->
-            <div id="view-overview" class="space-y-gutter">
+        <!-- Page Content -->
+        <div class="p-margin-desktop space-y-gutter overflow-y-auto flex-1">
                 <!-- Dashboard Header -->
                 <div class="flex justify-between items-end">
                     <div>
@@ -280,62 +255,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <!-- VIEW: LOGS -->
-            <div id="view-logs" class="hidden space-y-gutter">
-                <div>
-                    <h3 class="font-headline-lg text-headline-lg text-on-surface mb-2">Agent Logs</h3>
-                    <p class="text-on-surface-variant font-body-sm">Real-time logs from all running agents</p>
-                </div>
-                <div class="bg-surface-container-lowest border border-outline-variant p-6">
-                    <div id="logs-container" class="font-code-sm text-code-sm text-on-surface-variant space-y-2 max-h-96 overflow-y-auto">
-                        <div class="text-on-surface-variant/60">Waiting for agent logs...</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- VIEW: PERFORMANCE -->
-            <div id="view-performance" class="hidden space-y-gutter">
-                <div>
-                    <h3 class="font-headline-lg text-headline-lg text-on-surface mb-2">Performance Metrics</h3>
-                    <p class="text-on-surface-variant font-body-sm">Agent execution performance and statistics</p>
-                </div>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-gutter">
-                    <div class="bg-surface-container border border-outline-variant p-6">
-                        <p class="font-label-caps text-label-caps text-on-surface-variant mb-4">Average Execution Time</p>
-                        <h4 class="font-headline-md text-headline-md text-primary-fixed" id="perf-avg-time">--</h4>
-                    </div>
-                    <div class="bg-surface-container border border-outline-variant p-6">
-                        <p class="font-label-caps text-label-caps text-on-surface-variant mb-4">Success Rate</p>
-                        <h4 class="font-headline-md text-headline-md text-secondary" id="perf-success-rate">--</h4>
-                    </div>
-                </div>
-            </div>
-
-            <!-- VIEW: SETTINGS -->
-            <div id="view-settings" class="hidden space-y-gutter">
-                <div>
-                    <h3 class="font-headline-lg text-headline-lg text-on-surface mb-2">Settings</h3>
-                    <p class="text-on-surface-variant font-body-sm">Configure dashboard and agent behavior</p>
-                </div>
-                <div class="bg-surface-container border border-outline-variant p-6 space-y-4">
-                    <div class="flex items-center justify-between">
-                        <div>
-                            <p class="font-label-caps text-label-caps text-on-surface">Auto-refresh</p>
-                            <p class="text-on-surface-variant font-body-sm text-body-sm">Update every 2 seconds</p>
-                        </div>
-                        <input type="checkbox" id="settings-autorefresh" class="cursor-pointer" checked/>
-                    </div>
-                    <div class="border-t border-outline-variant pt-4 flex items-center justify-between">
-                        <div>
-                            <p class="font-label-caps text-label-caps text-on-surface">Dark Mode</p>
-                            <p class="text-on-surface-variant font-body-sm text-body-sm">Currently enabled</p>
-                        </div>
-                        <input type="checkbox" class="cursor-pointer" checked disabled/>
-                    </div>
-                </div>
-            </div>
         </div>
     </main>
 </div>
@@ -359,55 +278,6 @@
             const text = row.textContent.toLowerCase();
             row.style.display = text.includes(query) ? '' : 'none';
         });
-    });
-
-    // View switching
-    function switchView(viewName) {
-        document.querySelectorAll('[id^="view-"]').forEach(view => {
-            view.classList.add('hidden');
-        });
-        const targetView = document.getElementById(`view-${viewName}`);
-        if (targetView) {
-            targetView.classList.remove('hidden');
-        }
-    }
-
-    function updateNavigation(section) {
-        document.querySelectorAll('nav button').forEach(btn => {
-            btn.classList.remove('text-primary-fixed', 'border-r-2', 'border-primary-fixed', 'bg-surface-container-highest');
-            btn.classList.add('text-on-surface-variant', 'opacity-70');
-        });
-
-        const activeBtn = document.getElementById(`nav-${section}`);
-        if (activeBtn) {
-            activeBtn.classList.remove('text-on-surface-variant', 'opacity-70');
-            activeBtn.classList.add('text-primary-fixed', 'border-r-2', 'border-primary-fixed', 'bg-surface-container-highest');
-        }
-
-        switchView(section);
-    }
-
-    // Navigation handlers
-    document.getElementById('nav-overview').addEventListener('click', () => {
-        updateNavigation('overview');
-    });
-
-    document.getElementById('nav-agents').addEventListener('click', () => {
-        updateNavigation('agents');
-    });
-
-    document.getElementById('nav-logs').addEventListener('click', () => {
-        updateNavigation('logs');
-        refreshLogs();
-    });
-
-    document.getElementById('nav-performance').addEventListener('click', () => {
-        updateNavigation('performance');
-        refreshPerformanceMetrics();
-    });
-
-    document.getElementById('nav-settings').addEventListener('click', () => {
-        updateNavigation('settings');
     });
 
     // Button event handlers
@@ -509,39 +379,6 @@
         document.body.appendChild(modal);
     }
 
-    function refreshLogs() {
-        const logsContainer = document.getElementById('logs-container');
-        if (!logsContainer) return;
-
-        let logsHTML = '';
-        Object.entries(agentsCache).forEach(([name, agent]) => {
-            const status = agent.status || 'waiting';
-            const timestamp = new Date().toLocaleTimeString();
-            const color = statusColors[status]?.color || 'text-on-surface-variant';
-            logsHTML += `<div class="${color}">[${timestamp}] <span class="font-bold">${name}</span> - <span class="text-on-surface-variant">${status.toUpperCase()}</span></div>`;
-        });
-
-        logsContainer.innerHTML = logsHTML || '<div class="text-on-surface-variant/60">No agents found</div>';
-    }
-
-    function refreshPerformanceMetrics() {
-        if (Object.keys(agentsCache).length === 0) return;
-
-        const durations = Object.values(agentsCache)
-            .filter(a => a.duration_ms)
-            .map(a => a.duration_ms);
-
-        const avgTime = durations.length > 0 ? (durations.reduce((a, b) => a + b) / durations.length / 1000).toFixed(2) : 0;
-        const complete = Object.values(agentsCache).filter(a => a.status === 'complete').length;
-        const total = Object.keys(agentsCache).length;
-        const successRate = total > 0 ? ((complete / total) * 100).toFixed(1) : 0;
-
-        const avgTimeEl = document.getElementById('perf-avg-time');
-        const successRateEl = document.getElementById('perf-success-rate');
-        if (avgTimeEl) avgTimeEl.textContent = `${avgTime}s`;
-        if (successRateEl) successRateEl.textContent = `${successRate}%`;
-    }
-
     async function updateDashboard() {
         try {
             const runsRes = await fetch('/api/runs');
@@ -614,17 +451,6 @@
 
             document.getElementById('total-agents').textContent = `Total Agents: ${totalAgents}`;
             document.getElementById('agent-count').textContent = `Monitoring ${totalAgents} active SDLC orchestration nodes`;
-
-            // Update other views if they're visible
-            const logsView = document.getElementById('view-logs');
-            if (logsView && !logsView.classList.contains('hidden')) {
-                refreshLogs();
-            }
-
-            const perfView = document.getElementById('view-performance');
-            if (perfView && !perfView.classList.contains('hidden')) {
-                refreshPerformanceMetrics();
-            }
         } catch (err) {
             console.error('Error updating dashboard:', err);
         }
