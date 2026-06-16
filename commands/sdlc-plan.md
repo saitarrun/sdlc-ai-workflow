@@ -7,6 +7,8 @@ argument-hint: <feature-description-or-gh-issue-url>
 
 Spawns agents: product-manager → business-analyst → software-architect → security-architect
 
+**Dashboard**: Automatically starts orchestrator and opens dashboard. All agents report status in real-time.
+
 Outputs:
 - `.sdlc/01-roadmap.md` — Product vision, QUANTS targets, roadmap
 - `.sdlc/01-requirements.md` — User stories (INVEST), data flows

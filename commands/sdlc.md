@@ -15,7 +15,9 @@ This command runs the complete Software Development Lifecycle end-to-end with 6 
 /sdlc --phase Phase4  # Re-run Phase 4 in isolation
 ```
 
-## Phases
+## Phases (Dashboard-Synced)
+
+Dashboard automatically starts and displays all agents in real-time:
 
 1. **Phase 1 — Planning** (product-manager [grill → define] → business-analyst → software-architect → security-architect)
 2. **Phase 2 — Design** (ux-researcher → ui-ux-designer)
@@ -26,9 +28,10 @@ This command runs the complete Software Development Lifecycle end-to-end with 6 
 
 ## Process
 
-1. Parse feature request (or load from GitHub issue)
-2. Create `.sdlc/run-<timestamp>/` directory for shared state
-3. Run Phase 1 (Product Manager grills customer to reach shared understanding) → present results → **GATE**: User approves or requests changes
+1. **Initialize Dashboard** — Start orchestrator, open dashboard at `http://127.0.0.1:4242`
+2. Parse feature request (or load from GitHub issue)
+3. Create `.sdlc/run-<timestamp>/` directory for shared state
+4. Run Phase 1 (Product Manager grills customer to reach shared understanding) → agents report to dashboard → **GATE**: User approves or requests changes
 4. Run Phase 2 → present results → **GATE**: User approves or requests changes
 5. ... repeat for all 6 phases ...
 6. Compile final summary → offer `gh pr create`

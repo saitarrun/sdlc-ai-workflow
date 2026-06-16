@@ -48,6 +48,8 @@
     "menu": "node scripts/sdlc-menu.js",
     "ui": "node scripts/ui-server.js",
     "orchestrator": "node scripts/orchestrator.js",
+    "init-dashboard": "node scripts/init-dashboard.js",
+    "agent-init": "node scripts/agent-init-hook.js",
     "report-agent": "node scripts/agent-reporter.js",
     "test": "echo 'Plugin tests would run here' && exit 0"
   },
