@@ -8,8 +8,8 @@ argument-hint: "[requirements-file] [--minimal|--clean|--both]"
 Spawns agents: ux-researcher → ui-ux-designer
 
 Outputs:
-- `.sdlc/02-user-journeys.md` — Personas, journey maps, user paths, competitive analysis
-- `.sdlc/02-wireframes.md` — Wireframes, component specs, design system, interaction flows
+- `./projects/<feature-name>/02-user-journeys.md` — Personas, journey maps, user paths, competitive analysis
+- `./projects/<feature-name>/02-wireframes.md` — Wireframes, component specs, design system, interaction flows
 
 ## Process
 
@@ -21,5 +21,5 @@ Outputs:
 
 ```bash
 /sdlc-design
-/sdlc-design .sdlc/01-requirements.md
+/sdlc-design ./projects/<feature-name>/01-requirements.md
 ```

@@ -69,7 +69,7 @@ Ask the user questions ONE AT A TIME across these 8 sections:
 
 ### STEP 2: Save Grill Summary
 
-Create `.sdlc/01-grill-summary.md` with:
+Create `./projects/<feature-name>/01-grill-summary.md` with:
 - Feature description
 - All 32 answers organized by section
 - Timestamp and confirmation
@@ -126,7 +126,7 @@ Show:
 ```
 User Input (Grill-Me)
     ↓
-.sdlc/01-grill-summary.md (Source of Truth)
+./projects/<feature-name>/01-grill-summary.md (Source of Truth)
     ↓
     ├─→ product-manager → 01-roadmap.md (references grill-summary)
     ├─→ business-analyst → 01-requirements.md (grounded in grill-summary + roadmap)

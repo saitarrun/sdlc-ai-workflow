@@ -104,10 +104,10 @@ My take: 80% login via OAuth in 60 days?
 (continues with architect agents...)
 
 Phase 1 Complete! Review artifacts:
-- .sdlc/01-roadmap.md
-- .sdlc/01-requirements.md
-- .sdlc/01-architecture.md
-- .sdlc/01-threat-model.md
+- ./projects/<feature-name>/01-roadmap.md
+- ./projects/<feature-name>/01-requirements.md
+- ./projects/<feature-name>/01-architecture.md
+- ./projects/<feature-name>/01-threat-model.md
 ```
 
 ---
@@ -167,11 +167,11 @@ My take: QUANTS metrics? 70% adoption in 30 days?
 ✅ Phase 1 Complete!
 
 # Artifacts generated:
-# .sdlc/run-20260616T133615/01-grill-summary.md (interview + confirmation)
-# .sdlc/run-20260616T133615/01-roadmap.md
-# .sdlc/run-20260616T133615/01-requirements.md
-# .sdlc/run-20260616T133615/01-architecture.md
-# .sdlc/run-20260616T133615/01-threat-model.md
+# ./projects/<feature-name>/01-grill-summary.md (interview + confirmation)
+# ./projects/<feature-name>/01-roadmap.md
+# ./projects/<feature-name>/01-requirements.md
+# ./projects/<feature-name>/01-architecture.md
+# ./projects/<feature-name>/01-threat-model.md
 ```
 
 **Key: The grill-me interview informs all 4 agents' work.**
@@ -190,8 +190,8 @@ node scripts/spawn-phase-agents.js design run-20260616T133615
 # ✅ Completed: accessibility-engineer
 
 # Artifacts:
-# .sdlc/run-20260616T133615/02-user-journeys.md
-# .sdlc/run-20260616T133615/02-wireframes.md
+# ./projects/<feature-name>/02-user-journeys.md
+# ./projects/<feature-name>/02-wireframes.md
 ```
 
 ### Phase 3: Development
@@ -208,7 +208,7 @@ node scripts/spawn-phase-agents.js dev run-20260616T133615
 # (all complete)
 
 # Artifacts:
-# .sdlc/run-20260616T133615/03-implementation.log
+# ./projects/<feature-name>/03-implementation.log
 # (code changes, schema designs, etc.)
 ```
 
@@ -243,7 +243,7 @@ security-architect (waits for software-architect)
 ## Artifact Output
 
 ### Location
-All artifacts are in: `.sdlc/run-<timestamp>/`
+All artifacts are in: `./projects/<feature-name>/`
 
 ### Phase 1 Artifacts
 - `01-roadmap.md` — Product vision, QUANTS metrics, milestones
@@ -313,8 +313,8 @@ SDLC_PORT=5000 node scripts/spawn-phase-agents.js plan <run-id>
 ### Problem: Artifacts not generating
 
 ```bash
-# Check .sdlc/run-<id>/collaboration-log.json
-cat .sdlc/run-*/collaboration-log.json | jq '.agents'
+# Check ./projects/<feature-name>/collaboration-log.json
+cat ./projects/<feature-name>/collaboration-log.json | jq '.agents'
 
 # Should show agent status: working, complete, blocked
 ```

@@ -12,7 +12,7 @@ Outputs:
 - Unit and integration tests
 - Database migrations
 - Component files
-- `.sdlc/03-implementation.log` — Summary of files changed per component
+- `./projects/<feature-name>/03-implementation.log` — Summary of files changed per component
 
 ## Process
 

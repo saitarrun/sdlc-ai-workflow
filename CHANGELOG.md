@@ -16,7 +16,7 @@ All notable changes to this project will be documented in this file.
 #### Phase 1 Workflow Changed - Mandatory Grill-Me Interview
 - **BREAKING**: Phase 1 now REQUIRES mandatory grill-me interview before any agent work
 - **BREAKING**: Product Manager cannot proceed without completing all 4 grill-me phases (blocking gate)
-- **BREAKING**: All downstream agents (Business Analyst, Software Architect, Security Architect) MUST read `.sdlc/01-grill-summary.md` as first step
+- **BREAKING**: All downstream agents (Business Analyst, Software Architect, Security Architect) MUST read `./projects/<feature-name>/01-grill-summary.md` as first step
 - **Impact**: Automated Phase 1 workflows that don't conduct grill-me interview will fail
 - **Migration**: See MIGRATION.md for upgrade instructions
 

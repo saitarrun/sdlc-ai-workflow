@@ -83,7 +83,7 @@ Search your docs for:
 Replace with:
 - ✅ "Monitor progress in Claude Code terminal"
 - ✅ "Agent status shown in console output"
-- ✅ "Artifacts generated in .sdlc/run-<id>/"
+- ✅ "Artifacts generated in ./projects/<id>/"
 
 ---
 
@@ -113,18 +113,18 @@ Product Manager
     │  ├─ Phase 2: User & Market Understanding
     │  ├─ Phase 3: Constraints & Trade-offs
     │  └─ Phase 4: Success Criteria
-    └─ Output: .sdlc/01-grill-summary.md (SOURCE OF TRUTH)
+    └─ Output: ./projects/<feature-name>/01-grill-summary.md (SOURCE OF TRUTH)
     ↓
 Business Analyst
-    ├─ MANDATORY: Read .sdlc/01-grill-summary.md FIRST
+    ├─ MANDATORY: Read ./projects/<feature-name>/01-grill-summary.md FIRST
     └─ Write requirements grounded in grill-me answers
     ↓
 Software Architect
-    ├─ MANDATORY: Read .sdlc/01-grill-summary.md FIRST
+    ├─ MANDATORY: Read ./projects/<feature-name>/01-grill-summary.md FIRST
     └─ Design tech stack constrained by grill-me (timeline, team, compliance)
     ↓
 Security Architect
-    ├─ MANDATORY: Read .sdlc/01-grill-summary.md FIRST
+    ├─ MANDATORY: Read ./projects/<feature-name>/01-grill-summary.md FIRST
     └─ Scope threat model to customer's concerns from grill-me
     ↓
 Artifacts (all grounded in grill-me user input)
@@ -147,7 +147,7 @@ Artifacts (all grounded in grill-me user input)
    - Constraints: "What's your timeline?" "Team size?" "Budget?"
    - Success: "How will you measure success?" "What are failure modes?"
 
-2. After interview, Product Manager creates `.sdlc/01-grill-summary.md`
+2. After interview, Product Manager creates `./projects/<feature-name>/01-grill-summary.md`
 
 3. Business Analyst reads grill-summary → writes requirements grounded in your answers
 
@@ -173,19 +173,19 @@ Artifacts (all grounded in grill-me user input)
 ### New Monitoring (v1.3.0)
 - ✅ Claude Code terminal output
 - ✅ Agent progress in console logs
-- ✅ Artifacts generated in `.sdlc/run-<timestamp>/`
-- ✅ Collaboration log: `.sdlc/run-<timestamp>/collaboration-log.json`
+- ✅ Artifacts generated in `./projects/<timestamp>/`
+- ✅ Collaboration log: `./projects/<timestamp>/collaboration-log.json`
 
 **To check progress:**
 ```bash
 # See generated artifacts
-ls .sdlc/run-<timestamp>/
+ls ./projects/<timestamp>/
 
 # View grill-summary
-cat .sdlc/run-<timestamp>/01-grill-summary.md
+cat ./projects/<timestamp>/01-grill-summary.md
 
 # View agent collaboration log
-cat .sdlc/run-<timestamp>/collaboration-log.json
+cat ./projects/<timestamp>/collaboration-log.json
 ```
 
 ---
@@ -281,8 +281,8 @@ If you need automated Phase 1, you must:
 
 **Removed in v1.3.0.** Instead:
 - Check Claude Code terminal for agent progress
-- View artifacts: `ls .sdlc/run-<timestamp>/`
-- Read grill-summary: `cat .sdlc/run-<timestamp>/01-grill-summary.md`
+- View artifacts: `ls ./projects/<timestamp>/`
+- Read grill-summary: `cat ./projects/<timestamp>/01-grill-summary.md`
 
 ### "Can I skip the grill-me interview?"
 
@@ -311,7 +311,7 @@ This ensures user input is the first priority and all downstream work is grounde
 
 ### Q: Can I run Phase 1 multiple times with different grill-me answers?
 
-**A:** Yes! Each run creates a new directory: `.sdlc/run-<timestamp>/`. You can run Phase 1 multiple times with different questions or answers.
+**A:** Yes! Each run creates a new directory: `./projects/<timestamp>/`. You can run Phase 1 multiple times with different questions or answers.
 
 ### Q: How long does the grill-me interview take?
 

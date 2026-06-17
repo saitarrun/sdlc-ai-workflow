@@ -1,5 +1,5 @@
 ---
-description: Master orchestrator for the complete 6-phase SDLC pipeline. Runs all phases sequentially with approval gates between each phase. Maintains shared state in .sdlc/run-<N>/ directory.
+description: Master orchestrator for the complete 6-phase SDLC pipeline. Runs all phases sequentially with approval gates between each phase. Maintains shared state in ./projects/<feature-name>/ directory.
 argument-hint: <feature-description> [--from <phase>] [--to <phase>]
 ---
 
@@ -29,7 +29,7 @@ The orchestrator runs agents sequentially across 6 phases:
 ## Process
 
 1. Parse feature request (or load from GitHub issue)
-2. Create `.sdlc/run-<timestamp>/` directory for shared state
+2. Create `./projects/<feature-name>/` directory for shared state
 3. Run Phase 1 (Product Manager grills customer to reach shared understanding) → **GATE**: User approves or requests changes
 4. Run Phase 2 → present results → **GATE**: User approves or requests changes
 5. ... repeat for all 6 phases ...
@@ -37,7 +37,7 @@ The orchestrator runs agents sequentially across 6 phases:
 
 ## Output
 
-All artifacts are written to `.sdlc/run-<N>/`:
+All artifacts are written to `./projects/<feature-name>/`:
 - `01-roadmap.md` — Product vision, roadmap, milestones
 - `01-requirements.md` — User stories, acceptance criteria
 - `01-architecture.md` — ADR, component design, trade-off tables

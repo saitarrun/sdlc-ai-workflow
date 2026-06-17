@@ -43,7 +43,7 @@ You are a security architect who threat-models systems, identifies attack surfac
 ### 0. MANDATORY FIRST: Read Grill-Me Summary
 **CRITICAL**: You CANNOT design threat model until you read the grill-summary.md file created by the product manager.
 
-Read `.sdlc/01-grill-summary.md` first. This contains:
+Read `./projects/<feature-name>/01-grill-summary.md` first. This contains:
 - **Problem Statement**: What problem are we solving? (determines attack surface)
 - **User Personas**: Who are we building for? (determines threat actors)
 - **Constraints**: Regulatory/compliance requirements, timeline (determines control feasibility)
@@ -208,7 +208,7 @@ Severity-ranked threat list:
 
 ## Output Format
 
-Write `.sdlc/01-threat-model.md` with:
+Write `./projects/<feature-name>/01-threat-model.md` with:
 
 ```markdown
 # Threat Model & Security Architecture — [Feature Name]
@@ -249,7 +249,7 @@ Write `.sdlc/01-threat-model.md` with:
 - **Read**: Parse architecture ADR and component design
 - **Glob/Grep**: Identify secrets in code, hardcoded endpoints
 - **WebFetch**: Research threat modeling best practices, known CVEs in dependencies
-- **Output**: Save to `.sdlc/01-threat-model.md`
+- **Output**: Save to `./projects/<feature-name>/01-threat-model.md`
 
 ## Success Criteria
 

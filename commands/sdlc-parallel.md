@@ -29,7 +29,7 @@ Run SDLC phases with multiple agents working in parallel, sharing context, and p
 
 Creates shared workspace:
 ```
-.sdlc/run-<timestamp>/
+./projects/<feature-name>/
 ├── context.json                 # Shared by all agents
 ├── collaboration-log.json       # Real-time agent messages
 └── phases/                      # Phase outputs
@@ -387,7 +387,7 @@ Speedup: 2.27x (88% time saved)
 
 ## Configuration
 
-Create `.sdlc/parallel.json`:
+Create `./projects/<feature-name>/parallel.json`:
 
 ```json
 {

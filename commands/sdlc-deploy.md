@@ -11,7 +11,7 @@ Outputs:
 - `.github/workflows/` — GitHub Actions pipeline
 - `Dockerfile` (multi-stage build)
 - `infra/terraform/` or `infra/cdk/` — Cloud infrastructure as code
-- `.sdlc/05-pipeline.log` — CI/CD execution results
+- `./projects/<feature-name>/05-pipeline.log` — CI/CD execution results
 
 ## Process
 

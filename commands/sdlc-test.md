@@ -9,8 +9,8 @@ Spawns agents: qa-manual-tester → automation-qa-engineer → appsec-engineer �
 
 Outputs:
 - Test files (unit, integration, E2E)
-- `.sdlc/04-test-cases.md` — Test coverage report, flaky tests
-- `.sdlc/04-security.md` — OWASP audit, CVE scan, penetration test findings (severity-ranked)
+- `./projects/<feature-name>/04-test-cases.md` — Test coverage report, flaky tests
+- `./projects/<feature-name>/04-security.md` — OWASP audit, CVE scan, penetration test findings (severity-ranked)
 - Test execution results
 
 ## Process

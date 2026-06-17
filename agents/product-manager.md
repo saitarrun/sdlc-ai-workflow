@@ -77,7 +77,7 @@ Use **skill-grill-me** to relentlessly interview the customer. This is not a cas
 **CRITICAL: Marking Grill-Me as Complete**
 When you have fully completed the grill-me phase:
 
-1. **Save comprehensive grill-summary file**: `.sdlc/01-grill-summary.md` with all 4 phases documented in detail. This is the SINGLE SOURCE OF TRUTH for all downstream agents.
+1. **Save comprehensive grill-summary file**: `./projects/<feature-name>/01-grill-summary.md` with all 4 phases documented in detail. This is the SINGLE SOURCE OF TRUTH for all downstream agents.
 
    ```markdown
    # Grill-Me Summary
@@ -172,15 +172,15 @@ When you have fully completed the grill-me phase:
          "status": "working",
          "gates": ["grill-complete"],
          "grill_timestamp": "2026-06-16T14:30:00Z",
-         "grill_summary_path": ".sdlc/01-grill-summary.md"
+         "grill_summary_path": "./projects/<feature-name>/01-grill-summary.md"
        }
      }
    }
    ```
 
-3. Downstream agents (business-analyst, software-architect, security-architect) will automatically unlock and read `.sdlc/01-grill-summary.md` as their PRIMARY source of truth
+3. Downstream agents (business-analyst, software-architect, security-architect) will automatically unlock and read `./projects/<feature-name>/01-grill-summary.md` as their PRIMARY source of truth
    
-4. **CRITICAL**: `.sdlc/01-grill-summary.md` MUST be comprehensive and detailed. Every agent depends on it. If it's vague or incomplete, all downstream work will be misaligned with customer needs.
+4. **CRITICAL**: `./projects/<feature-name>/01-grill-summary.md` MUST be comprehensive and detailed. Every agent depends on it. If it's vague or incomplete, all downstream work will be misaligned with customer needs.
 
 ### 2. ONLY AFTER GRILL-ME COMPLETE: Parse Feature Request
 After ALL FOUR GRILL PHASES are fully resolved, read the user's feature description or GitHub issue. Extract (now informed by grill session):
@@ -272,7 +272,7 @@ Write a `PRODUCT_ROADMAP.md` file with:
 - **Bash**: Execute `gh issue create` to scaffold GitHub epics
 - **Glob/Grep**: Search codebase for existing tech stack hints
 - **WebFetch**: Research competitor products, user requirements
-- **Output**: Save to `.sdlc/01-roadmap.md`
+- **Output**: Save to `./projects/<feature-name>/01-roadmap.md`
 
 ## Success Criteria
 

@@ -49,7 +49,7 @@ sdlc-ai-workflow install
 ### Dashboard Removed
 - **Removed**: `npm run ui` command (web-based dashboard)
 - **Removed**: `npm run init-dashboard` command
-- **What to do**: Monitor progress in Claude Code terminal output instead. View artifacts in `.sdlc/run-<timestamp>/` directory.
+- **What to do**: Monitor progress in Claude Code terminal output instead. View artifacts in `./projects/<feature-name>/` directory.
 - **Migration**: See [MIGRATION.md](./MIGRATION.md) for detailed upgrade instructions.
 
 ### Phase 1: Mandatory Grill-Me Interview
@@ -268,7 +268,7 @@ Run the full 6-phase SDLC pipeline end-to-end:
 
 The command will:
 1. Parse the feature request
-2. Initialize `.sdlc/run-<timestamp>/` for shared state
+2. Initialize `./projects/<feature-name>/` for shared state
 3. Spawn agents sequentially through all 6 phases with explicit user approval gates between phases
 4. Produce comprehensive artifacts (PRD, ADR, threat model, wireframes, code, tests, security audit, SLOs, runbooks)
 5. Offer to create a GitHub PR with all changes
@@ -285,7 +285,7 @@ npm run orchestrator -- --dir /path/to/project --port 4242 --run-id <optional-ru
 - **Dependency Graph**: Automatically determines which agents can run based on completions
 - **Queue Management**: Maintains a queue of ready-to-spawn agents
 - **Real-Time Updates**: Broadcasts agent status changes via Server-Sent Events
-- **Persistent State**: Stores all agent status in `.sdlc/run-<timestamp>/collaboration-log.json`
+- **Persistent State**: Stores all agent status in `./projects/<feature-name>/collaboration-log.json`
 - **Multi-Run Support**: Tracks multiple concurrent or historical runs
 
 **API Endpoints:**
@@ -340,7 +340,7 @@ See [INTEGRATIONS.md](./INTEGRATIONS.md) for full details on code-review-graph c
 All 20 agents work **in parallel** with **real-time communication** and **shared context**:
 
 - **Parallel Execution**: Multiple agents work simultaneously on independent tasks
-- **Shared Workspace**: `.sdlc/run-<timestamp>/` with `context.json` for shared state
+- **Shared Workspace**: `./projects/<feature-name>/` with `context.json` for shared state
 - **Collaboration Log**: Real-time messages between agents (`collaboration-log.json`)
 - **Dependency Management**: Agents automatically wait for blocking dependencies
 - **Feedback Loops**: Peer review and validation run in parallel with development

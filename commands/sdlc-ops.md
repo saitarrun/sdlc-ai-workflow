@@ -8,9 +8,9 @@ argument-hint: "[--service <name>] [--framework prometheus]"
 Spawns agents: sre-engineer → secops-analyst → data-engineer
 
 Outputs:
-- `.sdlc/06-slo.md` — Service Level Objectives, error budgets, runbook stubs
-- `.sdlc/06-secops.md` — Security monitoring setup, alert rules
-- `.sdlc/06-data-pipelines.md` — ETL/ELT workflows, data quality checks
+- `./projects/<feature-name>/06-slo.md` — Service Level Objectives, error budgets, runbook stubs
+- `./projects/<feature-name>/06-secops.md` — Security monitoring setup, alert rules
+- `./projects/<feature-name>/06-data-pipelines.md` — ETL/ELT workflows, data quality checks
 
 ## Process
 
