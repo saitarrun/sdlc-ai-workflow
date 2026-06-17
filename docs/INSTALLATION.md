@@ -8,7 +8,7 @@ Get instant access to 20 role-based agents, 13 knowledge skills, and 9 commands 
 
 ```bash
 npm install -g sdlc-ai-workflow
-sdlc-workflow install
+sdlc-ai-workflow install
 ```
 
 ### Option 2: Local Installation (from source)

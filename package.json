@@ -54,7 +54,7 @@
     "test": "echo 'Plugin tests would run here' && exit 0"
   },
   "bin": {
-    "sdlc-workflow": "scripts/cli.js",
+    "sdlc-ai-workflow": "scripts/cli.js",
     "sdlc": "scripts/sdlc-menu.js"
   },
   "claude": {

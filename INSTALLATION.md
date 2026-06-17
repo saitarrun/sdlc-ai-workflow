@@ -8,7 +8,7 @@
 
 ```bash
 sudo npm install -g sdlc-ai-workflow
-sdlc-workflow install
+sdlc-ai-workflow install
 ```
 
 Then **restart Claude Code** and you're ready to use `/sdlc-plan`, `/sdlc-design`, etc.
@@ -16,7 +16,7 @@ Then **restart Claude Code** and you're ready to use `/sdlc-plan`, `/sdlc-design
 **To update later:**
 ```bash
 sudo npm install -g sdlc-ai-workflow@latest
-sdlc-workflow install
+sdlc-ai-workflow install
 ```
 
 ### Option B: Install from Source (For Development)
@@ -78,7 +78,7 @@ When new commits are pushed to npm, simply:
 
 ```bash
 sudo npm install -g sdlc-workflow@latest
-sdlc-workflow install
+sdlc-ai-workflow install
 ```
 
 Then restart Claude Code.

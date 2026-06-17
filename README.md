@@ -34,7 +34,7 @@ A complete SDLC Workflow in a Plugin: 26 agents across 6 phases, 43 knowledge sk
 
 ```bash
 sudo npm install -g sdlc-ai-workflow
-sdlc-workflow install
+sdlc-ai-workflow install
 ```
 
 Restart Claude Code. Done!
@@ -42,7 +42,7 @@ Restart Claude Code. Done!
 **Update later:**
 ```bash
 sudo npm install -g sdlc-ai-workflow@latest
-sdlc-workflow install
+sdlc-ai-workflow install
 ```
 
 ### Option B: Install from Source
